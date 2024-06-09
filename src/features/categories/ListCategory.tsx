@@ -78,7 +78,18 @@ export const CategoryList = () => {
         <DataGrid
           rows={rows}
           columns={columns}
-          
+          disableColumnSelector={true}
+          disableSelectionOnClick={true}
+          disableColumnFilter={true}
+          disableDensitySelector={true}
+          rowsPerPageOptions={[2, 20, 50, 100]}
+          components={{ Toolbar: GridToolbar }}
+          componentsProps={{
+            toolbar: {
+              showQuickFilter: true,
+              quickFilterProps: { debounceMs: 500 }
+            }
+          }}
         />
       </div>
     </Box>
