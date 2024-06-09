@@ -1,5 +1,5 @@
 import { Box, Button, IconButton, Typography } from "@mui/material";
-import { DataGrid, GridColDef, GridRenderCellParams, GridRowsProp } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar, GridColDef, GridRenderCellParams, GridRowsProp } from '@mui/x-data-grid';
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
 import { selectCategories } from "./CategorySlice";
@@ -74,12 +74,12 @@ export const CategoryList = () => {
           New Category
         </Button>
       </Box>
-
-      {/* {categories.map((category) => (
-          <Typography key={category.id}>{category.name}</Typography>
-        ))} */}
       <div style={{ height: 300, width: '100%' }}>
-        <DataGrid rows={rows} columns={columns} />
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          
+        />
       </div>
     </Box>
 
