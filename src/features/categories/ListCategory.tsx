@@ -6,6 +6,12 @@ import { selectCategories } from "./CategorySlice";
 import DeleteIcon from "@mui/icons-material/Delete"
 export const CategoryList = () => {
   const categories = useAppSelector(selectCategories);
+  const componentsProps = {
+    toolbar: {
+      showQuickFilter: true,
+      quickFilterProps: { debounceMs: 500 }
+    }
+  }
 
   const rows: GridRowsProp = categories.map((category) => ({
     id: category.id,
@@ -20,7 +26,8 @@ export const CategoryList = () => {
     {
       field: 'name',
       headerName: 'Name',
-      flex: 1
+      flex: 1,
+      renderCell: renderNameCell
     },
     {
       field: "isActive",
@@ -43,6 +50,15 @@ export const CategoryList = () => {
 
 
   ];
+  function renderNameCell(rowData: GridRenderCellParams) {
+    return (
+      <Link
+        to={`/categories/edit/${rowData.id}`}
+        style={{ textDecoration: "none" }} >
+        <Typography color="primary" >{rowData.value}</Typography>
+      </Link>
+    )
+  }
   function renderActionsCell(params: GridRenderCellParams) {
     return (
       <IconButton
@@ -74,24 +90,19 @@ export const CategoryList = () => {
           New Category
         </Button>
       </Box>
-      <div style={{ height: 300, width: '100%' }}>
+      <Box sx={{ display: "flex", height: 400 }}>
         <DataGrid
-          rows={rows}
           columns={columns}
-          disableColumnSelector={true}
-          disableSelectionOnClick={true}
-          disableColumnFilter={true}
-          disableDensitySelector={true}
-          rowsPerPageOptions={[2, 20, 50, 100]}
           components={{ Toolbar: GridToolbar }}
-          componentsProps={{
-            toolbar: {
-              showQuickFilter: true,
-              quickFilterProps: { debounceMs: 500 }
-            }
-          }}
+          componentsProps={componentsProps}
+          disableColumnFilter={true}
+          disableColumnSelector={true}
+          disableDensitySelector={true}
+          disableSelectionOnClick={true}
+          rows={rows}
+          rowsPerPageOptions={[2, 20, 50, 100]}
         />
-      </div>
+      </Box>
     </Box>
 
 
