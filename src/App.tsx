@@ -18,7 +18,6 @@ function App() {
       }}>
         <Header />
         <Layout >
-          <h1>Minha Rota</h1>
           <Routes>
             <Route path='/' element={<CategoryList />} />
             <Route path='/categories' element={<CategoryList />} />
