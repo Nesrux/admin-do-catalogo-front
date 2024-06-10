@@ -31,7 +31,7 @@ export const CategoryCreate = () => {
           category={category}
           handleChange={handleChange}
           handleToggle={handleToggle}
-          onSubmit={() => { }}
+          handleSubmit={() => { }}
           isDisable={isDisabled}
           isLoading={false}
         />
