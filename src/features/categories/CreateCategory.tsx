@@ -1,6 +1,7 @@
 import { Box, Paper, Typography } from "@mui/material";
 import { useState } from "react";
 import { Category } from "./CategorySlice";
+import { CategoryForm } from "./components/CategoryForm";
 
 export const CategoryCreate = () => {
   const [isDisabled, setIsDisabled] = useState(false)
@@ -14,7 +15,7 @@ export const CategoryCreate = () => {
     deleted_at: ""
   });
 
-  const handlerChange = () => { };
+  const handleChange = () => { };
 
   const handleToggle = () => { };
 
@@ -26,7 +27,14 @@ export const CategoryCreate = () => {
             <Typography variant="h4">Create Category</Typography>
           </Box>
         </Box>
-       
+        <CategoryForm
+          category={category}
+          handleChange={handleChange}
+          handleToggle={handleToggle}
+          onSubmit={() => { }}
+          isDisable={isDisabled}
+          isLoading={false}
+        />
       </Paper>
     </Box>
   );
